@@ -13,6 +13,14 @@ All tests will only have a single longest common subsequence. Don't worry about 
 '''
 
 def find_subsequences(string):
+
+    '''
+    Creates a list of all possible subsequences for a string
+
+    INPUT: string
+    OUTPUT: list of subsequences of string
+    '''
+
     characters = list(string)
     subsequences = [list(combinations(characters, n)) for n in range(1, len(characters)+1)]
     flattened_subsequences = [item for sublist in subsequences for item in sublist]
@@ -21,6 +29,14 @@ def find_subsequences(string):
     return final_subsequences
 
 def lcs(x, y):
+
+    '''
+    Compares list of substrings of two different strings, and returns the longest one in common
+
+    INPUT: two strings
+    OUTPUT: longest subsequence shared by the two inputted strings
+    '''
+    
     x_subsequences = np.array(find_subsequences(x))
     y_subsequences = np.array(find_subsequences(y))
     common_subsequences = np.intersect1d(x_subsequences, y_subsequences)
